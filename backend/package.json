@@ -1,0 +1,20 @@
+{
+  "private": true,
+  "name": "praha-challenge-ddd-template",
+  "version": "1.0.0",
+  "packageManager": "pnpm@9.1.1",
+  "engines": {
+    "node": "20.13.1"
+  },
+  "scripts": {
+    "dev": "tsx watch src/index.ts"
+  },
+  "dependencies": {
+    "@hono/node-server": "1.11.1",
+    "hono": "4.3.8"
+  },
+  "devDependencies": {
+    "@types/node": "20.11.17",
+    "tsx": "4.7.1"
+  }
+}
