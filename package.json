@@ -7,13 +7,15 @@
     "node": "20.13.1"
   },
   "scripts": {
-    "dev": "tsx watch src/index.ts"
+    "dev": "tsx watch src/index.ts",
+    "check": "biome check --apply ./src/*"
   },
   "dependencies": {
     "@hono/node-server": "1.11.1",
     "hono": "4.3.8"
   },
   "devDependencies": {
+    "@biomejs/biome": "1.7.3",
     "@types/node": "20.11.17",
     "tsx": "4.7.1"
   }

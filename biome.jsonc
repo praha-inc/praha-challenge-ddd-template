@@ -1,0 +1,17 @@
+{
+  "$schema": "https://biomejs.dev/schemas/1.7.3/schema.json",
+  "organizeImports": {
+    "enabled": true
+  },
+  "linter": {
+    "enabled": true,
+    "rules": {
+      "recommended": true
+    }
+  },
+  "formatter": {
+    // Biomeが対応しているかどうかでインデントがスペースになったりタブになったりしてしまうので、スペースで統一
+    "indentStyle": "space",
+    "indentWidth": 2
+  }
+}
