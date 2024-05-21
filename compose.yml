@@ -1,0 +1,21 @@
+services:
+  database:
+    image: postgres:15.3
+    container_name: database
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_DB=database
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -d database -U postgres"]
+      interval: 5s
+      timeout: 5s
+      retries: 12
+    ports:
+      - 5432:5432
+    volumes:
+      - ./docker/database/pg_dumps:/usr/local/share/pg_dumps
+      - database-data:/var/lib/postgresql/data
+
+volumes:
+  database-data:

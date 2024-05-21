@@ -1,5 +1,12 @@
 {
-  "cSpell.words": ["agaroot", "biomejs", "Hono", "praha", "tsup"],
+  "cSpell.words": [
+    "agaroot",
+    "biomejs",
+    "Hono",
+    "praha",
+    "tsup",
+    "valibot"
+  ],
   "editor.formatOnSave": true,
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "[javascript]": {
