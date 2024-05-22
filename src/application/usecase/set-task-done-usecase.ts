@@ -1,19 +1,24 @@
-import { Task } from "../domain/task/task";
-import type { TaskRepositoryInterface } from "../domain/task/task.repository";
+import { Task } from "../../domain/task/task";
+import type { TaskRepositoryInterface } from "../../domain/task/task.repository";
 
 type Payload = Promise<
-  { result: "success"; data: Task } | { result: "failure"; error: Error }
+  | { result: "success"; data: Task }
+  | { result: "not-found" }
+  | { result: "failure"; error: Error }
 >;
-export class CreateTaskUsecase {
+export class SetTaskDoneUsecase {
   private readonly repository: TaskRepositoryInterface;
 
   public constructor(repository: TaskRepositoryInterface) {
     this.repository = repository;
   }
 
-  public async execute(title: string): Payload {
+  public async execute(props: {
+    task: { id: string; title: string; done: boolean };
+  }): Payload {
     try {
-      const task = new Task({ title });
+      const task = new Task(props.task);
+      task.do();
 
       const payload = await this.repository.save(task);
 
