@@ -14,7 +14,8 @@
     "type-check": "tsc --pretty --noEmit",
     "start": "node dist/index.js",
     "migration:generate": "drizzle-kit generate --config=./src/libs/drizzle/config.ts",
-    "migration:apply": "drizzle-kit migrate --config=./src/libs/drizzle/config.ts"
+    "migration:apply": "drizzle-kit migrate --config=./src/libs/drizzle/config.ts",
+    "migration:drop": "drizzle-kit drop --config=./src/libs/drizzle/config.ts"
   },
   "dependencies": {
     "@hono/node-server": "1.11.1",
