@@ -1,5 +1,5 @@
-import { Task } from "../domain/task/task";
-import type { TaskRepositoryInterface } from "../domain/task/task.repository";
+import { Task } from "../../domain/task/task";
+import type { TaskRepositoryInterface } from "../../domain/task/task.repository";
 import { CreateTaskUsecase } from "./create-task-usecase";
 
 describe("CreateTaskUsecase", () => {
