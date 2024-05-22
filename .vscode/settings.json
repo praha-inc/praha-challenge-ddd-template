@@ -1,12 +1,5 @@
 {
-  "cSpell.words": [
-    "agaroot",
-    "biomejs",
-    "Hono",
-    "praha",
-    "tsup",
-    "Usecase",
-  ],
+  "cSpell.words": ["agaroot", "biomejs", "Hono", "praha", "tsup", "Usecase"],
   "editor.formatOnSave": true,
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "[javascript]": {
@@ -20,6 +13,20 @@
   },
   "[typescriptreact]": {
     "editor.defaultFormatter": "biomejs.biome"
+  },
+  "[json]": {
+    "editor.defaultFormatter": "biomejs.biome",
+    "editor.quickSuggestions": {
+      "strings": true
+    },
+    "editor.suggest.insertMode": "replace"
+  },
+  "[jsonc]": {
+    "editor.defaultFormatter": "biomejs.biome",
+    "editor.quickSuggestions": {
+      "strings": true
+    },
+    "editor.suggest.insertMode": "replace"
   },
   "editor.codeActionsOnSave": {
     "quickfix.biome": "explicit",

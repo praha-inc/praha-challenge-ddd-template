@@ -17,5 +17,8 @@
     // Biomeが対応しているかどうかでインデントがスペースになったりタブになったりしてしまうので、スペースで統一
     "indentStyle": "space",
     "indentWidth": 2
+  },
+  "files": {
+    "ignore": ["./src/libs/drizzle/migrations/**/*"]
   }
 }
