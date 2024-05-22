@@ -8,6 +8,20 @@
       "when": 1716276617580,
       "tag": "0000_quiet_nebula",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "6",
+      "when": 1716327828687,
+      "tag": "0001_aromatic_nemesis",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "6",
+      "when": 1716330106482,
+      "tag": "0002_glamorous_iron_fist",
+      "breakpoints": true
     }
   ]
 }

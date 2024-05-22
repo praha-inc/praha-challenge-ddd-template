@@ -17,3 +17,9 @@ export const someData = pgTable(
     pk: primaryKey({ columns: [id], name: "some_data_pk" }),
   }),
 );
+
+export const tasks = pgTable("tasks", {
+  id: varchar("id").notNull(),
+  title: varchar("title").notNull(),
+  done: boolean("done").notNull(),
+});

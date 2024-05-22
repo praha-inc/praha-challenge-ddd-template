@@ -5,7 +5,7 @@
     "Hono",
     "praha",
     "tsup",
-    "valibot"
+    "Usecase",
   ],
   "editor.formatOnSave": true,
   "editor.defaultFormatter": "esbenp.prettier-vscode",
