@@ -1,4 +1,4 @@
-import type { TaskQueryService } from "../query-service/task.query-service";
+import type { TaskQueryServiceInterface } from "../query-service/task.query-service";
 
 type Payload = Promise<
   | { result: "success"; data: { id: string; title: string; done: boolean } }
@@ -6,9 +6,9 @@ type Payload = Promise<
   | { result: "failure"; error: Error }
 >;
 export class GetTaskByIdUsecase {
-  private readonly queryService: TaskQueryService;
+  private readonly queryService: TaskQueryServiceInterface;
 
-  public constructor(queryService: TaskQueryService) {
+  public constructor(queryService: TaskQueryServiceInterface) {
     this.queryService = queryService;
   }
 

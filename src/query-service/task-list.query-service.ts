@@ -1,4 +1,4 @@
-export type TaskListQueryService = () => Promise<
+export type TaskListQueryServiceInterface = () => Promise<
   {
     id: string;
     title: string;

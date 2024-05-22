@@ -1,6 +1,6 @@
 import { Task } from "../domain/task/task";
 import type { TaskRepositoryInterface } from "../domain/task/task.repository";
-import type { TaskQueryService } from "../query-service/task.query-service";
+import type { TaskQueryServiceInterface } from "../query-service/task.query-service";
 
 type Payload = Promise<
   | { result: "success"; data: Task }
@@ -9,11 +9,11 @@ type Payload = Promise<
 >;
 export class SetTaskDoneUsecase {
   private readonly repository: TaskRepositoryInterface;
-  private readonly queryService: TaskQueryService;
+  private readonly queryService: TaskQueryServiceInterface;
 
   public constructor(
     repository: TaskRepositoryInterface,
-    queryService: TaskQueryService,
+    queryService: TaskQueryServiceInterface,
   ) {
     this.repository = repository;
     this.queryService = queryService;

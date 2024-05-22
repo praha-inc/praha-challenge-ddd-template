@@ -1,8 +1,8 @@
 import { getDatabase } from "../../../libs/drizzle/get-database";
 import { tasks } from "../../../libs/drizzle/schema";
-import type { TaskListQueryService } from "../../../query-service/task-list.query-service";
+import type { TaskListQueryServiceInterface } from "../../../query-service/task-list.query-service";
 
-export const taskListQueryService: TaskListQueryService = async () => {
+export const taskListQueryService: TaskListQueryServiceInterface = async () => {
   const database = getDatabase();
 
   const data = await database

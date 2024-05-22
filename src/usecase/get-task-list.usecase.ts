@@ -1,13 +1,13 @@
-import type { TaskListQueryService } from "../query-service/task-list.query-service";
+import type { TaskListQueryServiceInterface } from "../query-service/task-list.query-service";
 
 type Payload = Promise<
   | { result: "success"; data: { id: string; title: string; done: boolean }[] }
   | { result: "failure"; error: Error }
 >;
 export class GetTaskListUsecase {
-  private readonly queryService: TaskListQueryService;
+  private readonly queryService: TaskListQueryServiceInterface;
 
-  public constructor(queryService: TaskListQueryService) {
+  public constructor(queryService: TaskListQueryServiceInterface) {
     this.queryService = queryService;
   }
 

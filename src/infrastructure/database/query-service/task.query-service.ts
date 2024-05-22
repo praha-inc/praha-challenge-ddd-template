@@ -1,9 +1,9 @@
 import { eq } from "drizzle-orm";
 import { getDatabase } from "../../../libs/drizzle/get-database";
 import { tasks } from "../../../libs/drizzle/schema";
-import type { TaskQueryService } from "../../../query-service/task.query-service";
+import type { TaskQueryServiceInterface } from "../../../query-service/task.query-service";
 
-export const taskQueryService: TaskQueryService = async (id) => {
+export const taskQueryService: TaskQueryServiceInterface = async (id) => {
   const database = getDatabase();
 
   const [data] = await database

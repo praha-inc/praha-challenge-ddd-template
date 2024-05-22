@@ -1,13 +1,13 @@
-import type { TodoListQueryService } from "../query-service/todo-list.query-service";
+import type { TodoListQueryServiceInterface } from "../query-service/todo-list.query-service";
 
 type Payload = Promise<
   | { result: "success"; data: { id: string; title: string; done: boolean }[] }
   | { result: "failure"; error: Error }
 >;
 export class GetTodoListUsecase {
-  private readonly queryService: TodoListQueryService;
+  private readonly queryService: TodoListQueryServiceInterface;
 
-  public constructor(queryService: TodoListQueryService) {
+  public constructor(queryService: TodoListQueryServiceInterface) {
     this.queryService = queryService;
   }
 
