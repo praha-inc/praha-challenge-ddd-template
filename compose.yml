@@ -14,7 +14,6 @@ services:
     ports:
       - 5432:5432
     volumes:
-      - ./docker/database/pg_dumps:/usr/local/share/pg_dumps
       - database-data:/var/lib/postgresql/data
 
 volumes:
