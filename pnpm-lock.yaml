@@ -13,7 +13,7 @@ importers:
         version: 1.11.1
       '@hono/zod-validator':
         specifier: 0.2.1
-        version: 0.2.1(hono@4.3.9)(zod@3.23.8)
+        version: 0.2.1(hono@4.3.10)(zod@3.23.8)
       dotenv:
         specifier: 16.4.5
         version: 16.4.5
@@ -21,8 +21,8 @@ importers:
         specifier: 0.30.10
         version: 0.30.10(postgres@3.4.4)
       hono:
-        specifier: 4.3.9
-        version: 4.3.9
+        specifier: 4.3.10
+        version: 4.3.10
       just-memoize:
         specifier: 2.2.0
         version: 2.2.0
@@ -1576,8 +1576,8 @@ packages:
   heap@0.2.7:
     resolution: {integrity: sha512-2bsegYkkHO+h/9MGbn6KWcE45cHZgPANo5LXF7EvWdT0yT2EguSVO1nDgU5c8+ZOPwp2vMNa7YFsJhVcDR9Sdg==}
 
-  hono@4.3.9:
-    resolution: {integrity: sha512-6c5LVE23HnIS8iBhY+XPmYJlPeeClznOi7mBNsAsJCgxo8Ciz75LTjqRUf5wv4RYq8kL+1KPLUZHCtKmbZssNg==}
+  hono@4.3.10:
+    resolution: {integrity: sha512-67NRwEpFljCRkdl4th4LH+DKj/skEqtRJE9otdp88CGTIMZ7uG2Avn5DTkKsGwjnm2LxkoIlA+bQfFLg33psvg==}
     engines: {node: '>=16.0.0'}
 
   html-escaper@2.0.2:
@@ -2802,9 +2802,9 @@ snapshots:
 
   '@hono/node-server@1.11.1': {}
 
-  '@hono/zod-validator@0.2.1(hono@4.3.9)(zod@3.23.8)':
+  '@hono/zod-validator@0.2.1(hono@4.3.10)(zod@3.23.8)':
     dependencies:
-      hono: 4.3.9
+      hono: 4.3.10
       zod: 3.23.8
 
   '@isaacs/cliui@8.0.2':
@@ -3745,7 +3745,7 @@ snapshots:
 
   heap@0.2.7: {}
 
-  hono@4.3.9: {}
+  hono@4.3.10: {}
 
   html-escaper@2.0.2: {}
 
