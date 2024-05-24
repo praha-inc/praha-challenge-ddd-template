@@ -1,10 +1,10 @@
 import { zValidator } from "@hono/zod-validator";
 import { Hono } from "hono";
 import { z } from "zod";
-import { TaskListQueryService } from "../../application/query-service/task-list.query-service";
-import { TodoListQueryService } from "../../application/query-service/todo-list.query-service";
-import { postgreSQLTaskListQueryService } from "../../infrastructure/query-service/postgresql-task-list.query-service";
-import { postgreSQLTodoListQueryService } from "../../infrastructure/query-service/postgresql-todo-list.query-service";
+import { TaskListQueryService } from "../../application/query-service/task-list-query-service";
+import { TodoListQueryService } from "../../application/query-service/todo-list-query-service";
+import { postgresqlTaskListQueryService } from "../../infrastructure/query-service/postgresql-task-list-query-service";
+import { postgresqlTodoListQueryService } from "../../infrastructure/query-service/postgresql-todo-list-query-service";
 
 export const getTaskListController = new Hono();
 
@@ -26,8 +26,8 @@ getTaskListController.get(
 
     const queryService =
       filter === "todo"
-        ? new TodoListQueryService(postgreSQLTodoListQueryService)
-        : new TaskListQueryService(postgreSQLTaskListQueryService);
+        ? new TodoListQueryService(postgresqlTodoListQueryService)
+        : new TaskListQueryService(postgresqlTaskListQueryService);
     const payload = await queryService.execute();
 
     switch (payload.result) {

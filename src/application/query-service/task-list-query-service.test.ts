@@ -1,5 +1,5 @@
 import { beforeEach, describe, expect, test, vi } from "vitest";
-import { TaskListQueryService } from "./task-list.query-service";
+import { TaskListQueryService } from "./task-list-query-service";
 
 describe("TaskListQueryService", () => {
   describe("タスク一覧の取得に成功したとき", () => {
