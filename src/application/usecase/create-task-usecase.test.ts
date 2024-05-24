@@ -1,3 +1,4 @@
+import { beforeEach, describe, expect, test, vi } from "vitest";
 import { Task } from "../../domain/task/task";
 import type { TaskRepositoryInterface } from "../../domain/task/task.repository";
 import { CreateTaskUsecase } from "./create-task-usecase";
@@ -13,7 +14,7 @@ describe("CreateTaskUsecase", () => {
 
     beforeEach(async () => {
       repository = {
-        save: jest.fn().mockResolvedValueOnce({
+        save: vi.fn().mockResolvedValueOnce({
           result: "success",
           data: new Task({ title }),
         }),
@@ -36,7 +37,7 @@ describe("CreateTaskUsecase", () => {
 
     beforeEach(async () => {
       repository = {
-        save: jest.fn().mockRejectedValueOnce(new Error(message)),
+        save: vi.fn().mockRejectedValueOnce(new Error(message)),
       };
       usecase = new CreateTaskUsecase(repository);
       result = await usecase.execute(title);
