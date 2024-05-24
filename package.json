@@ -2,17 +2,18 @@
   "private": true,
   "name": "praha-challenge-ddd-template",
   "version": "1.0.0",
+  "type": "module",
   "packageManager": "pnpm@9.1.2",
   "engines": {
     "node": "20.13.1"
   },
   "scripts": {
-    "dev": "tsx watch src/index.ts",
+    "dev": "vite-node --watch src/index.ts",
+    "build": "vite build",
+    "start": "node dist/index.mjs",
     "lint": "biome ci .",
-    "build": "tsup",
     "test": "jest",
     "type-check": "tsc --pretty --noEmit",
-    "start": "node dist/index.js",
     "migration:generate": "drizzle-kit generate",
     "migration:apply": "drizzle-kit migrate",
     "migration:drop": "drizzle-kit drop"
@@ -37,8 +38,8 @@
     "@types/node": "20.12.12",
     "drizzle-kit": "0.21.4",
     "jest": "29.7.0",
-    "tsup": "8.0.2",
-    "tsx": "4.11.0",
-    "typescript": "5.4.5"
+    "typescript": "5.4.5",
+    "vite": "5.2.11",
+    "vite-node": "1.6.0"
   }
 }
