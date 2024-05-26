@@ -2,7 +2,15 @@ import { Task } from "../../domain/task/task";
 import type { TaskRepositoryInterface } from "../../domain/task/task-repository";
 
 type Payload = Promise<
-  { result: "success"; data: Task } | { result: "failure"; error: Error }
+  | {
+      result: "success";
+      data: {
+        id: string;
+        title: string;
+        done: boolean;
+      };
+    }
+  | { result: "failure"; error: Error }
 >;
 export class CreateTaskUsecase {
   private readonly repository: TaskRepositoryInterface;
@@ -17,7 +25,18 @@ export class CreateTaskUsecase {
 
       const payload = await this.repository.save(task);
 
-      return payload;
+      if (payload.result !== "success") {
+        return payload;
+      }
+
+      return {
+        result: "success",
+        data: {
+          id: payload.data.getId(),
+          title: payload.data.getTitle(),
+          done: payload.data.isDone(),
+        },
+      };
     } catch (error) {
       return {
         result: "failure",

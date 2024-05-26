@@ -25,11 +25,7 @@ createTaskController.post(
     switch (payload.result) {
       case "success": {
         const { data } = payload;
-        return c.json({
-          id: data.getId(),
-          title: data.getTitle(),
-          done: data.isDone(),
-        });
+        return c.json(data);
       }
       case "failure": {
         return c.text(payload.error.message, 500);
