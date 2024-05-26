@@ -26,7 +26,7 @@ describe("CreateTaskUsecase", () => {
     test("作成されたタスクを取得できる", async () => {
       expect(result.result).toBe("success");
       if (result.result === "success") {
-        expect(result.data.getTitle()).toBe(title);
+        expect(result.data.title).toBe(title);
       }
     });
   });
