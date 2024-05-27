@@ -1,14 +1,11 @@
 {
   "$schema": "https://json.schemastore.org/tsconfig",
   "extends": [
-    "@tsconfig/node-lts/tsconfig.json",
-    "@tsconfig/strictest/tsconfig.json"
+    "@tsconfig/strictest/tsconfig.json",
+    "@tsconfig/node-lts/tsconfig.json"
   ],
-  "include": ["**/*.ts"],
-  "exclude": ["node_modules"],
   "compilerOptions": {
     "module": "ESNext",
-    "moduleResolution": "Bundler",
-    "types": ["node", "jest"]
+    "moduleResolution": "Bundler"
   }
 }
