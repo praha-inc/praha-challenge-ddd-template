@@ -51,11 +51,7 @@ editTaskTitleController.post(
     switch (usecasePayload.result) {
       case "success": {
         const { data } = usecasePayload;
-        return c.json({
-          id: data.getId(),
-          title: data.getTitle(),
-          done: data.isDone(),
-        });
+        return c.json(data);
       }
       case "not-found": {
         return c.text("task not found", 404);
