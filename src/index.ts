@@ -24,6 +24,7 @@ const server = serve({
 });
 
 if (import.meta.hot) {
+  // HMR時に同一ポートでサーバーが立ち上がろうとする為、リロードが発生する前にサーバーを閉じる
   import.meta.hot.on("vite:beforeFullReload", () => {
     server.close();
   });
