@@ -13,7 +13,7 @@ importers:
         version: 1.11.1
       '@hono/zod-validator':
         specifier: 0.2.1
-        version: 0.2.1(hono@4.3.11)(zod@3.23.8)
+        version: 0.2.1(hono@4.4.0)(zod@3.23.8)
       dotenv:
         specifier: 16.4.5
         version: 16.4.5
@@ -21,8 +21,8 @@ importers:
         specifier: 0.30.10
         version: 0.30.10(postgres@3.4.4)
       hono:
-        specifier: 4.3.11
-        version: 4.3.11
+        specifier: 4.4.0
+        version: 4.4.0
       just-memoize:
         specifier: 2.2.0
         version: 2.2.0
@@ -1542,10 +1542,12 @@ packages:
 
   glob@7.2.3:
     resolution: {integrity: sha512-nFR0zLpU2YCaRxwoCJvL6UvCH2JFyFVIvwTLsIf21AuHlMskA1hhTdk+LlYJtOlYt9v6dvszD2BGRqBL+iQK9Q==}
+    deprecated: Glob versions prior to v9 are no longer supported
 
   glob@8.1.0:
     resolution: {integrity: sha512-r8hpEjiQEYlF2QU0df3dS+nxxSIreXQS1qRhMJM0Q5NDdR386C7jb7Hwwod8Fgiuex+k0GFjgft18yvxm5XoCQ==}
     engines: {node: '>=12'}
+    deprecated: Glob versions prior to v9 are no longer supported
 
   globals@11.12.0:
     resolution: {integrity: sha512-WOBp/EEGUiIsJSp7wcv/y6MO+lV9UoncWqxuFfm8eBwzWNgyfBd6Gz+IeKQ9jCmyhoH99g15M3T+QaVHFjizVA==}
@@ -1576,8 +1578,8 @@ packages:
   heap@0.2.7:
     resolution: {integrity: sha512-2bsegYkkHO+h/9MGbn6KWcE45cHZgPANo5LXF7EvWdT0yT2EguSVO1nDgU5c8+ZOPwp2vMNa7YFsJhVcDR9Sdg==}
 
-  hono@4.3.11:
-    resolution: {integrity: sha512-Hle1uNqJJKkebFkFEEWr3UAElJP922Xy0STfl8c+1PH1q+l6WrmhwAJFS6YH8ZWJY4z46qJtssbyVwwPm3dP5w==}
+  hono@4.4.0:
+    resolution: {integrity: sha512-Bb2GHk8jmlLIuxc3U+7UBGOoA5lByJTAFnRdH2N2fqEVy9TEQzJ9saIJUQ/ZqBvEvgEFe7UjPFNSFi8cyeU+3Q==}
     engines: {node: '>=16.0.0'}
 
   html-escaper@2.0.2:
@@ -2802,9 +2804,9 @@ snapshots:
 
   '@hono/node-server@1.11.1': {}
 
-  '@hono/zod-validator@0.2.1(hono@4.3.11)(zod@3.23.8)':
+  '@hono/zod-validator@0.2.1(hono@4.4.0)(zod@3.23.8)':
     dependencies:
-      hono: 4.3.11
+      hono: 4.4.0
       zod: 3.23.8
 
   '@isaacs/cliui@8.0.2':
@@ -3745,7 +3747,7 @@ snapshots:
 
   heap@0.2.7: {}
 
-  hono@4.3.11: {}
+  hono@4.4.0: {}
 
   html-escaper@2.0.2: {}
 
