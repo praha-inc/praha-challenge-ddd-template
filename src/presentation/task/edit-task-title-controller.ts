@@ -1,10 +1,10 @@
 import { zValidator } from "@hono/zod-validator";
 import { Hono } from "hono";
 import { z } from "zod";
-import { TaskQueryService } from "../../application/query-service/task.query-service";
+import { TaskQueryService } from "../../application/query-service/task-query-service";
 import { EditTaskTitleUsecase } from "../../application/usecase/edit-task-title-usecase";
-import { postgreSQLTaskQueryService } from "../../infrastructure/query-service/postgresql-task.query-service";
-import { PostgreSQLTaskRepository } from "../../infrastructure/repository/postgresql-task.repository";
+import { postgresqlTaskQueryService } from "../../infrastructure/query-service/postgresql-task-query-service";
+import { PostgresqlTaskRepository } from "../../infrastructure/repository/postgresql-task-repository";
 
 export const editTaskTitleController = new Hono();
 
@@ -28,7 +28,7 @@ editTaskTitleController.post(
     const id = c.req.valid("param").id;
     const title = c.req.valid("json").title;
 
-    const queryService = new TaskQueryService(postgreSQLTaskQueryService);
+    const queryService = new TaskQueryService(postgresqlTaskQueryService);
     const queryServicePayload = await queryService.execute(id);
 
     if (queryServicePayload.result === "not-found") {
@@ -38,7 +38,7 @@ editTaskTitleController.post(
       return c.text(queryServicePayload.error.message, 500);
     }
 
-    const usecase = new EditTaskTitleUsecase(new PostgreSQLTaskRepository());
+    const usecase = new EditTaskTitleUsecase(new PostgresqlTaskRepository());
     const usecasePayload = await usecase.execute({
       task: {
         id: queryServicePayload.data.id,

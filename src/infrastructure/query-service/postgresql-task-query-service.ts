@@ -1,9 +1,9 @@
 import { eq } from "drizzle-orm";
-import type { TaskQueryServiceInterface } from "../../application/query-service/task.query-service";
+import type { TaskQueryServiceInterface } from "../../application/query-service/task-query-service";
 import { getDatabase } from "../../libs/drizzle/get-database";
 import { tasks } from "../../libs/drizzle/schema";
 
-export const postgreSQLTaskQueryService: TaskQueryServiceInterface = async (
+export const postgresqlTaskQueryService: TaskQueryServiceInterface = async (
   id,
 ) => {
   try {

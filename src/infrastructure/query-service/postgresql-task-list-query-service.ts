@@ -1,9 +1,8 @@
-import { eq } from "drizzle-orm";
-import type { TodoListQueryServiceInterface } from "../../application/query-service/todo-list.query-service";
+import type { TaskListQueryServiceInterface } from "../../application/query-service/task-list-query-service";
 import { getDatabase } from "../../libs/drizzle/get-database";
 import { tasks } from "../../libs/drizzle/schema";
 
-export const postgreSQLTodoListQueryService: TodoListQueryServiceInterface =
+export const postgresqlTaskListQueryService: TaskListQueryServiceInterface =
   async () => {
     try {
       const database = getDatabase();
@@ -14,8 +13,7 @@ export const postgreSQLTodoListQueryService: TodoListQueryServiceInterface =
           title: tasks.title,
           done: tasks.done,
         })
-        .from(tasks)
-        .where(eq(tasks.done, false));
+        .from(tasks);
 
       return { result: "success", data };
     } catch (error) {

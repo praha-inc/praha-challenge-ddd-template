@@ -1,5 +1,5 @@
 import { Task } from "../../domain/task/task";
-import type { TaskRepositoryInterface } from "../../domain/task/task.repository";
+import type { TaskRepositoryInterface } from "../../domain/task/task-repository";
 
 type Payload = Promise<
   { result: "success"; data: Task } | { result: "failure"; error: Error }
