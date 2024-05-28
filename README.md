@@ -19,3 +19,7 @@
   - 変更したテーブル定義をDBに反映するには、`pnpm run migration:generate`でマイグレーションファイルを生成し、`pnpm run migration:apply`でマイグレーションを実行してください。
 - DBのマイグレーションファイル（`./src/libs/drizzle/migrations/*`）を削除したい場合は、`pnpm run migration:drop`で削除してください。
   - `drizzle-kit`がマイグレーションの整合性を取れなくなるため、手作業で削除しないでください。
+
+## 注意
+
+このリポジトリはあくまで環境構築の手間を省くためのリポジトリです。Value Objectがない・Nominal Typingができていない（Taskと同じプロパティを持つクラスだと型が等価になってしまう）などなど、厳密な実装は全然できておりません。あるべき姿を模索しつつ実装を進めてください！
