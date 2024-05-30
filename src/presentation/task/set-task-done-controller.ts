@@ -42,7 +42,7 @@ setTaskDoneController.post(
     switch (payload.result) {
       case "success": {
         const { data } = payload;
-        return c.json({ data });
+        return c.json(data);
       }
       case "not-found": {
         return c.text("task not found", 404);
