@@ -13,7 +13,7 @@ type Payload = Promise<
   | { result: "not-found" }
   | { result: "failure"; error: Error }
 >;
-export class EditTaskTitleUsecase {
+export class SetTaskDoneUseCase {
   private readonly repository: TaskRepositoryInterface;
 
   public constructor(repository: TaskRepositoryInterface) {
@@ -22,11 +22,10 @@ export class EditTaskTitleUsecase {
 
   public async execute(props: {
     task: { id: string; title: string; done: boolean };
-    title: string;
   }): Payload {
     try {
       const task = new Task(props.task);
-      task.edit(props.title);
+      task.do();
 
       const payload = await this.repository.save(task);
 

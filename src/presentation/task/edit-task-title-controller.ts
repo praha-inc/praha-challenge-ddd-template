@@ -2,7 +2,7 @@ import { zValidator } from "@hono/zod-validator";
 import { Hono } from "hono";
 import { z } from "zod";
 import type { TaskQueryServiceInterface } from "../../application/query-service/task-query-service";
-import { EditTaskTitleUsecase } from "../../application/usecase/edit-task-title-usecase";
+import { EditTaskTitleUseCase } from "../../application/use-case/edit-task-title-use-case";
 import { PostgresqlTaskQueryService } from "../../infrastructure/query-service/postgresql-task-query-service";
 import { PostgresqlTaskRepository } from "../../infrastructure/repository/postgresql-task-repository";
 
@@ -39,8 +39,8 @@ editTaskTitleController.post(
       return c.text(queryServicePayload.error.message, 500);
     }
 
-    const usecase = new EditTaskTitleUsecase(new PostgresqlTaskRepository());
-    const usecasePayload = await usecase.execute({
+    const useCase = new EditTaskTitleUseCase(new PostgresqlTaskRepository());
+    const payload = await useCase.execute({
       task: {
         id: queryServicePayload.data.id,
         title: queryServicePayload.data.title,
@@ -49,15 +49,15 @@ editTaskTitleController.post(
       title,
     });
 
-    switch (usecasePayload.result) {
+    switch (payload.result) {
       case "success": {
-        return c.json(usecasePayload.data);
+        return c.json(payload.data);
       }
       case "not-found": {
         return c.text("task not found", 404);
       }
       case "failure": {
-        return c.text(usecasePayload.error.message, 500);
+        return c.text(payload.error.message, 500);
       }
     }
   },
