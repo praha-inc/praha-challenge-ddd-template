@@ -32,8 +32,7 @@ getTaskListController.get(
 
     switch (payload.result) {
       case "success": {
-        const { data } = payload;
-        return c.json(data);
+        return c.json(payload.data);
       }
       case "failure": {
         return c.text(payload.error.message, 500);
