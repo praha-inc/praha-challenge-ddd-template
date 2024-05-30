@@ -3,30 +3,30 @@ import type { TaskQueryServiceInterface } from "../../application/query-service/
 import { getDatabase } from "../../libs/drizzle/get-database";
 import { tasks } from "../../libs/drizzle/schema";
 
-export const postgresqlTaskQueryService: TaskQueryServiceInterface = async (
-  id,
-) => {
-  try {
-    const database = getDatabase();
+export class PostgresqlTaskQueryService implements TaskQueryServiceInterface {
+  public async invoke(id: string) {
+    try {
+      const database = getDatabase();
 
-    const [data] = await database
-      .select({
-        id: tasks.id,
-        title: tasks.title,
-        done: tasks.done,
-      })
-      .from(tasks)
-      .where(eq(tasks.id, id));
+      const [data] = await database
+        .select({
+          id: tasks.id,
+          title: tasks.title,
+          done: tasks.done,
+        })
+        .from(tasks)
+        .where(eq(tasks.id, id));
 
-    if (!data) {
-      return { result: "not-found" };
+      if (!data) {
+        return { result: "not-found" as const };
+      }
+
+      return { result: "success" as const, data };
+    } catch (error) {
+      return {
+        result: "failure" as const,
+        error: error instanceof Error ? error : new Error("Unknown error"),
+      };
     }
-
-    return { result: "success", data };
-  } catch (error) {
-    return {
-      result: "failure",
-      error: error instanceof Error ? error : new Error("Unknown error"),
-    };
   }
-};
+}

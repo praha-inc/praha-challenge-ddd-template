@@ -3,8 +3,10 @@ import type { TodoListQueryServiceInterface } from "../../application/query-serv
 import { getDatabase } from "../../libs/drizzle/get-database";
 import { tasks } from "../../libs/drizzle/schema";
 
-export const postgresqlTodoListQueryService: TodoListQueryServiceInterface =
-  async () => {
+export class PostgresqlTodoListQueryService
+  implements TodoListQueryServiceInterface
+{
+  public async invoke() {
     try {
       const database = getDatabase();
 
@@ -17,11 +19,12 @@ export const postgresqlTodoListQueryService: TodoListQueryServiceInterface =
         .from(tasks)
         .where(eq(tasks.done, false));
 
-      return { result: "success", data };
+      return { result: "success" as const, data };
     } catch (error) {
       return {
-        result: "failure",
+        result: "failure" as const,
         error: error instanceof Error ? error : new Error("Unknown error"),
       };
     }
-  };
+  }
+}

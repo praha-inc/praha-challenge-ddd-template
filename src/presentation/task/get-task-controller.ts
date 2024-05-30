@@ -1,8 +1,8 @@
 import { zValidator } from "@hono/zod-validator";
 import { Hono } from "hono";
 import { z } from "zod";
-import { TaskQueryService } from "../../application/query-service/task-query-service";
-import { postgresqlTaskQueryService } from "../../infrastructure/query-service/postgresql-task-query-service";
+import type { TaskQueryServiceInterface } from "../../application/query-service/task-query-service";
+import { PostgresqlTaskQueryService } from "../../infrastructure/query-service/postgresql-task-query-service";
 
 export const getTaskController = new Hono();
 
@@ -18,8 +18,9 @@ getTaskController.get(
   async (c) => {
     const id = c.req.valid("param").id;
 
-    const queryService = new TaskQueryService(postgresqlTaskQueryService);
-    const payload = await queryService.execute(id);
+    const queryService: TaskQueryServiceInterface =
+      new PostgresqlTaskQueryService();
+    const payload = await queryService.invoke(id);
 
     switch (payload.result) {
       case "success": {

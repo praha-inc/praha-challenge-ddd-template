@@ -1,10 +1,10 @@
 import { zValidator } from "@hono/zod-validator";
 import { Hono } from "hono";
 import { z } from "zod";
-import { TaskListQueryService } from "../../application/query-service/task-list-query-service";
-import { TodoListQueryService } from "../../application/query-service/todo-list-query-service";
-import { postgresqlTaskListQueryService } from "../../infrastructure/query-service/postgresql-task-list-query-service";
-import { postgresqlTodoListQueryService } from "../../infrastructure/query-service/postgresql-todo-list-query-service";
+import type { TaskListQueryServiceInterface } from "../../application/query-service/task-list-query-service";
+import type { TodoListQueryServiceInterface } from "../../application/query-service/todo-list-query-service";
+import { PostgresqlTaskListQueryService } from "../../infrastructure/query-service/postgresql-task-list-query-service";
+import { PostgresqlTodoListQueryService } from "../../infrastructure/query-service/postgresql-todo-list-query-service";
 
 export const getTaskListController = new Hono();
 
@@ -24,11 +24,13 @@ getTaskListController.get(
   async (c) => {
     const filter = c.req.valid("query").filter;
 
-    const queryService =
+    const queryService:
+      | TaskListQueryServiceInterface
+      | TodoListQueryServiceInterface =
       filter === "todo"
-        ? new TodoListQueryService(postgresqlTodoListQueryService)
-        : new TaskListQueryService(postgresqlTaskListQueryService);
-    const payload = await queryService.execute();
+        ? new PostgresqlTodoListQueryService()
+        : new PostgresqlTaskListQueryService();
+    const payload = await queryService.invoke();
 
     switch (payload.result) {
       case "success": {
