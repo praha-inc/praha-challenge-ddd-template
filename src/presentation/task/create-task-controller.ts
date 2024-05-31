@@ -15,20 +15,13 @@ createTaskController.post(
 
     return;
   }),
-  async (c) => {
-    const title = c.req.valid("json").title;
+  async (context) => {
+    const title = context.req.valid("json").title;
 
     const repository = new PostgresqlTaskRepository();
     const useCase = new CreateTaskUseCase(repository);
-    const payload = await useCase.execute(title);
 
-    switch (payload.result) {
-      case "success": {
-        return c.json(payload.data);
-      }
-      case "failure": {
-        return c.text(payload.error.message, 500);
-      }
-    }
+    const payload = await useCase.invoke({ title });
+    return context.json(payload);
   },
 );

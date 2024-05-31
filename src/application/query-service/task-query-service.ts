@@ -1,9 +1,15 @@
+export type TaskQueryServiceInput = {
+  id: string;
+};
+
+export type TaskQueryServicePayload = {
+  id: string;
+  title: string;
+  done: boolean;
+};
+
 export interface TaskQueryServiceInterface {
   invoke: (
-    id: string,
-  ) => Promise<
-    | { result: "success"; data: { id: string; title: string; done: boolean } }
-    | { result: "not-found" }
-    | { result: "failure"; error: Error }
-  >;
+    input: TaskQueryServiceInput,
+  ) => Promise<TaskQueryServicePayload | undefined>;
 }

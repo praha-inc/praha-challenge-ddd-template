@@ -1,17 +1,16 @@
 import { Task } from "../../domain/task/task";
 import type { TaskRepositoryInterface } from "../../domain/task/task-repository";
 
-type Payload = Promise<
-  | {
-      result: "success";
-      data: {
-        id: string;
-        title: string;
-        done: boolean;
-      };
-    }
-  | { result: "failure"; error: Error }
->;
+export type CreateTaskUseCaseInput = {
+  title: string;
+};
+
+export type CreateTaskUseCasePayload = {
+  id: string;
+  title: string;
+  done: boolean;
+};
+
 export class CreateTaskUseCase {
   private readonly repository: TaskRepositoryInterface;
 
@@ -19,29 +18,17 @@ export class CreateTaskUseCase {
     this.repository = repository;
   }
 
-  public async execute(title: string): Payload {
-    try {
-      const task = new Task({ title });
+  public async invoke(
+    input: CreateTaskUseCaseInput,
+  ): Promise<CreateTaskUseCasePayload> {
+    const task = new Task(input);
 
-      const payload = await this.repository.save(task);
+    const savedTask = await this.repository.save(task);
 
-      if (payload.result !== "success") {
-        return payload;
-      }
-
-      return {
-        result: "success",
-        data: {
-          id: payload.data.getId(),
-          title: payload.data.getTitle(),
-          done: payload.data.isDone(),
-        },
-      };
-    } catch (error) {
-      return {
-        result: "failure",
-        error: error instanceof Error ? error : new Error("Unknown error"),
-      };
-    }
+    return {
+      id: savedTask.getId(),
+      title: savedTask.getTitle(),
+      done: savedTask.isDone(),
+    };
   }
 }

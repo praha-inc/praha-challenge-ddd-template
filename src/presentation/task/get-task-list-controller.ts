@@ -21,8 +21,8 @@ getTaskListController.get(
       return;
     },
   ),
-  async (c) => {
-    const filter = c.req.valid("query").filter;
+  async (context) => {
+    const filter = context.req.valid("query").filter;
 
     const queryService:
       | TaskListQueryServiceInterface
@@ -30,15 +30,8 @@ getTaskListController.get(
       filter === "todo"
         ? new PostgresqlTodoListQueryService()
         : new PostgresqlTaskListQueryService();
-    const payload = await queryService.invoke();
 
-    switch (payload.result) {
-      case "success": {
-        return c.json(payload.data);
-      }
-      case "failure": {
-        return c.text(payload.error.message, 500);
-      }
-    }
+    const payload = await queryService.invoke();
+    return context.json(payload);
   },
 );
