@@ -1,8 +1,7 @@
-import { Task } from "../../domain/task/task";
 import type { TaskRepositoryInterface } from "../../domain/task/task-repository";
 
 export type EditTaskTitleUseCaseInput = {
-  task: { id: string; title: string; done: boolean };
+  taskId: string;
   title: string;
 };
 
@@ -11,6 +10,14 @@ export type EditTaskTitleUseCasePayload = {
   title: string;
   done: boolean;
 };
+
+export class EditTaskTitleUseCaseNotFoundError extends Error {
+  public override readonly name = "EditTaskTitleUseCaseNotFoundError";
+
+  public constructor() {
+    super("task not found");
+  }
+}
 
 export class EditTaskTitleUseCase {
   private readonly repository: TaskRepositoryInterface;
@@ -22,7 +29,11 @@ export class EditTaskTitleUseCase {
   public async invoke(
     input: EditTaskTitleUseCaseInput,
   ): Promise<EditTaskTitleUseCasePayload> {
-    const task = new Task(input.task);
+    const task = await this.repository.findById(input.taskId);
+    if (!task) {
+      throw new EditTaskTitleUseCaseNotFoundError();
+    }
+
     task.edit(input.title);
 
     const savedTask = await this.repository.save(task);

@@ -1,4 +1,4 @@
-import { sql } from "drizzle-orm";
+import { eq, sql } from "drizzle-orm";
 import { Task } from "../../domain/task/task";
 import type { TaskRepositoryInterface } from "../../domain/task/task-repository";
 import { getDatabase } from "../../libs/drizzle/get-database";
@@ -30,6 +30,19 @@ export class PostgresqlTaskRepository implements TaskRepositoryInterface {
 
     if (!row) {
       throw new Error("Failed to save a task");
+    }
+
+    return new Task(row);
+  }
+
+  public async findById(id: string) {
+    const [row] = await this.database
+      .select()
+      .from(tasks)
+      .where(eq(tasks.id, id));
+
+    if (!row) {
+      return undefined;
     }
 
     return new Task(row);
