@@ -24,41 +24,20 @@ editTaskTitleController.post(
 
     return;
   }),
-  async (c) => {
-    const id = c.req.valid("param").id;
-    const title = c.req.valid("json").title;
+  async (context) => {
+    const id = context.req.valid("param").id;
+    const title = context.req.valid("json").title;
 
     const queryService: TaskQueryServiceInterface =
       new PostgresqlTaskQueryService();
-    const queryServicePayload = await queryService.invoke(id);
+    const task = await queryService.invoke({ id });
 
-    if (queryServicePayload.result === "not-found") {
-      return c.text("task not found", 404);
-    }
-    if (queryServicePayload.result === "failure") {
-      return c.text(queryServicePayload.error.message, 500);
+    if (!task) {
+      return context.text("task not found", 404);
     }
 
     const useCase = new EditTaskTitleUseCase(new PostgresqlTaskRepository());
-    const payload = await useCase.execute({
-      task: {
-        id: queryServicePayload.data.id,
-        title: queryServicePayload.data.title,
-        done: queryServicePayload.data.done,
-      },
-      title,
-    });
-
-    switch (payload.result) {
-      case "success": {
-        return c.json(payload.data);
-      }
-      case "not-found": {
-        return c.text("task not found", 404);
-      }
-      case "failure": {
-        return c.text(payload.error.message, 500);
-      }
-    }
+    const payload = await useCase.invoke({ task, title });
+    return context.json(payload);
   },
 );

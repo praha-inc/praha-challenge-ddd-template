@@ -1,9 +1,9 @@
+export type TaskListQueryServicePayload = Array<{
+  id: string;
+  title: string;
+  done: boolean;
+}>;
+
 export interface TaskListQueryServiceInterface {
-  invoke: () => Promise<
-    | {
-        result: "success";
-        data: { id: string; title: string; done: boolean }[];
-      }
-    | { result: "failure"; error: Error }
-  >;
+  invoke: () => Promise<TaskListQueryServicePayload>;
 }

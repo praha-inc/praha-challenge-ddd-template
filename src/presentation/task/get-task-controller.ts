@@ -15,23 +15,17 @@ getTaskController.get(
 
     return;
   }),
-  async (c) => {
-    const id = c.req.valid("param").id;
+  async (context) => {
+    const id = context.req.valid("param").id;
 
     const queryService: TaskQueryServiceInterface =
       new PostgresqlTaskQueryService();
-    const payload = await queryService.invoke(id);
+    const payload = await queryService.invoke({ id });
 
-    switch (payload.result) {
-      case "success": {
-        return c.json(payload.data);
-      }
-      case "not-found": {
-        return c.text("task not found", 404);
-      }
-      case "failure": {
-        return c.text(payload.error.message, 500);
-      }
+    if (!payload) {
+      return context.text("task not found", 404);
     }
+
+    return context.json(payload);
   },
 );
