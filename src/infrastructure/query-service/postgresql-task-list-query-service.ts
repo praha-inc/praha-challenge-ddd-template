@@ -2,8 +2,10 @@ import type { TaskListQueryServiceInterface } from "../../application/query-serv
 import { getDatabase } from "../../libs/drizzle/get-database";
 import { tasks } from "../../libs/drizzle/schema";
 
-export const postgresqlTaskListQueryService: TaskListQueryServiceInterface =
-  async () => {
+export class PostgresqlTaskListQueryService
+  implements TaskListQueryServiceInterface
+{
+  public async invoke() {
     try {
       const database = getDatabase();
 
@@ -15,11 +17,12 @@ export const postgresqlTaskListQueryService: TaskListQueryServiceInterface =
         })
         .from(tasks);
 
-      return { result: "success", data };
+      return { result: "success" as const, data };
     } catch (error) {
       return {
-        result: "failure",
+        result: "failure" as const,
         error: error instanceof Error ? error : new Error("Unknown error"),
       };
     }
-  };
+  }
+}

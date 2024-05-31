@@ -1,9 +1,9 @@
 import { zValidator } from "@hono/zod-validator";
 import { Hono } from "hono";
 import { z } from "zod";
-import { TaskQueryService } from "../../application/query-service/task-query-service";
+import type { TaskQueryServiceInterface } from "../../application/query-service/task-query-service";
 import { SetTaskDoneUsecase } from "../../application/usecase/set-task-done-usecase";
-import { postgresqlTaskQueryService } from "../../infrastructure/query-service/postgresql-task-query-service";
+import { PostgresqlTaskQueryService } from "../../infrastructure/query-service/postgresql-task-query-service";
 import { PostgresqlTaskRepository } from "../../infrastructure/repository/postgresql-task-repository";
 
 export const setTaskDoneController = new Hono();
@@ -20,8 +20,9 @@ setTaskDoneController.post(
   async (c) => {
     const id = c.req.valid("param").id;
 
-    const queryService = new TaskQueryService(postgresqlTaskQueryService);
-    const queryServicePayload = await queryService.execute(id);
+    const queryService: TaskQueryServiceInterface =
+      new PostgresqlTaskQueryService();
+    const queryServicePayload = await queryService.invoke(id);
 
     if (queryServicePayload.result === "not-found") {
       return c.text("task not found", 404);
