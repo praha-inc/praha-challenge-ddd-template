@@ -12,18 +12,16 @@ export type CreateTaskUseCasePayload = {
 };
 
 export class CreateTaskUseCase {
-  private readonly repository: TaskRepositoryInterface;
-
-  public constructor(repository: TaskRepositoryInterface) {
-    this.repository = repository;
-  }
+  public constructor(
+    private readonly taskRepository: TaskRepositoryInterface,
+  ) {}
 
   public async invoke(
     input: CreateTaskUseCaseInput,
   ): Promise<CreateTaskUseCasePayload> {
     const task = new Task(input);
 
-    const savedTask = await this.repository.save(task);
+    const savedTask = await this.taskRepository.save(task);
 
     return {
       id: savedTask.getId(),
