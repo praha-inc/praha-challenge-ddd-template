@@ -1,5 +1,6 @@
 import { zValidator } from "@hono/zod-validator";
 import { Hono } from "hono";
+import { createMiddleware } from "hono/factory";
 import { z } from "zod";
 import {
   SetTaskDoneUseCase,
@@ -8,7 +9,13 @@ import {
 import { PostgresqlTaskRepository } from "../../infrastructure/repository/postgresql-task-repository";
 import { getDatabase } from "../../libs/drizzle/get-database";
 
-export const setTaskDoneController = new Hono();
+type Env = {
+  Variables: {
+    setTaskDoneUseCase: SetTaskDoneUseCase;
+  };
+};
+
+export const setTaskDoneController = new Hono<Env>();
 
 setTaskDoneController.post(
   "/tasks/:id/done",
@@ -19,15 +26,21 @@ setTaskDoneController.post(
 
     return;
   }),
+  createMiddleware<Env>(async (context, next) => {
+    const database = getDatabase();
+    const taskRepository = new PostgresqlTaskRepository(database);
+    const setTaskDoneUseCase = new SetTaskDoneUseCase(taskRepository);
+    context.set("setTaskDoneUseCase", setTaskDoneUseCase);
+
+    await next();
+  }),
   async (context) => {
     try {
       const id = context.req.valid("param").id;
 
-      const database = getDatabase();
-      const taskRepository = new PostgresqlTaskRepository(database);
-      const useCase = new SetTaskDoneUseCase(taskRepository);
-
-      const payload = await useCase.invoke({ taskId: id });
+      const payload = await context.var.setTaskDoneUseCase.invoke({
+        taskId: id,
+      });
       return context.json(payload);
     } catch (error) {
       if (error instanceof SetTaskDoneUseCaseNotFoundError) {
