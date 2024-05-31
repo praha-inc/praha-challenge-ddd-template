@@ -10,18 +10,23 @@ type Payload = Promise<
         done: boolean;
       };
     }
+  | { result: "not-found" }
   | { result: "failure"; error: Error }
 >;
-export class CreateTaskUsecase {
+export class EditTaskTitleUseCase {
   private readonly repository: TaskRepositoryInterface;
 
   public constructor(repository: TaskRepositoryInterface) {
     this.repository = repository;
   }
 
-  public async execute(title: string): Payload {
+  public async execute(props: {
+    task: { id: string; title: string; done: boolean };
+    title: string;
+  }): Payload {
     try {
-      const task = new Task({ title });
+      const task = new Task(props.task);
+      task.edit(props.title);
 
       const payload = await this.repository.save(task);
 

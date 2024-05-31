@@ -2,7 +2,7 @@ import { zValidator } from "@hono/zod-validator";
 import { Hono } from "hono";
 import { z } from "zod";
 import type { TaskQueryServiceInterface } from "../../application/query-service/task-query-service";
-import { SetTaskDoneUsecase } from "../../application/usecase/set-task-done-usecase";
+import { SetTaskDoneUseCase } from "../../application/use-case/set-task-done-use-case";
 import { PostgresqlTaskQueryService } from "../../infrastructure/query-service/postgresql-task-query-service";
 import { PostgresqlTaskRepository } from "../../infrastructure/repository/postgresql-task-repository";
 
@@ -31,8 +31,8 @@ setTaskDoneController.post(
       return c.text(queryServicePayload.error.message, 500);
     }
 
-    const usecase = new SetTaskDoneUsecase(new PostgresqlTaskRepository());
-    const payload = await usecase.execute({
+    const useCase = new SetTaskDoneUseCase(new PostgresqlTaskRepository());
+    const payload = await useCase.execute({
       task: {
         id: queryServicePayload.data.id,
         title: queryServicePayload.data.title,

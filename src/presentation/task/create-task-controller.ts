@@ -1,7 +1,7 @@
 import { zValidator } from "@hono/zod-validator";
 import { Hono } from "hono";
 import { z } from "zod";
-import { CreateTaskUsecase } from "../../application/usecase/create-task-usecase";
+import { CreateTaskUseCase } from "../../application/use-case/create-task-use-case";
 import { PostgresqlTaskRepository } from "../../infrastructure/repository/postgresql-task-repository";
 
 export const createTaskController = new Hono();
@@ -19,8 +19,8 @@ createTaskController.post(
     const title = c.req.valid("json").title;
 
     const repository = new PostgresqlTaskRepository();
-    const usecase = new CreateTaskUsecase(repository);
-    const payload = await usecase.execute(title);
+    const useCase = new CreateTaskUseCase(repository);
+    const payload = await useCase.execute(title);
 
     switch (payload.result) {
       case "success": {
