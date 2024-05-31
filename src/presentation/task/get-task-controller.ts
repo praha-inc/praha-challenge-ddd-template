@@ -3,6 +3,7 @@ import { Hono } from "hono";
 import { z } from "zod";
 import type { TaskQueryServiceInterface } from "../../application/query-service/task-query-service";
 import { PostgresqlTaskQueryService } from "../../infrastructure/query-service/postgresql-task-query-service";
+import { getDatabase } from "../../libs/drizzle/get-database";
 
 export const getTaskController = new Hono();
 
@@ -18,14 +19,14 @@ getTaskController.get(
   async (context) => {
     const id = context.req.valid("param").id;
 
+    const database = getDatabase();
     const queryService: TaskQueryServiceInterface =
-      new PostgresqlTaskQueryService();
-    const payload = await queryService.invoke({ id });
+      new PostgresqlTaskQueryService(database);
 
+    const payload = await queryService.invoke({ id });
     if (!payload) {
       return context.text("task not found", 404);
     }
-
     return context.json(payload);
   },
 );

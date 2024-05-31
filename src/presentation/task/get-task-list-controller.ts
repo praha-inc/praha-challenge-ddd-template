@@ -5,6 +5,7 @@ import type { TaskListQueryServiceInterface } from "../../application/query-serv
 import type { TodoListQueryServiceInterface } from "../../application/query-service/todo-list-query-service";
 import { PostgresqlTaskListQueryService } from "../../infrastructure/query-service/postgresql-task-list-query-service";
 import { PostgresqlTodoListQueryService } from "../../infrastructure/query-service/postgresql-todo-list-query-service";
+import { getDatabase } from "../../libs/drizzle/get-database";
 
 export const getTaskListController = new Hono();
 
@@ -24,12 +25,13 @@ getTaskListController.get(
   async (context) => {
     const filter = context.req.valid("query").filter;
 
+    const database = getDatabase();
     const queryService:
       | TaskListQueryServiceInterface
       | TodoListQueryServiceInterface =
       filter === "todo"
-        ? new PostgresqlTodoListQueryService()
-        : new PostgresqlTaskListQueryService();
+        ? new PostgresqlTodoListQueryService(database)
+        : new PostgresqlTaskListQueryService(database);
 
     const payload = await queryService.invoke();
     return context.json(payload);

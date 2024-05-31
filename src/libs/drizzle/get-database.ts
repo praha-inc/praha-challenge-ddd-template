@@ -4,6 +4,8 @@ import postgres from "postgres";
 import { getCredentials } from "./get-credentials";
 import * as schema from "./schema";
 
+export type Database = ReturnType<typeof getDatabase>;
+
 export const getDatabase = memoize(() => {
   const credentials = getCredentials();
   const client = postgres({

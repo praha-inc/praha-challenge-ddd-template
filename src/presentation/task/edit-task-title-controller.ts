@@ -6,6 +6,7 @@ import {
   EditTaskTitleUseCaseNotFoundError,
 } from "../../application/use-case/edit-task-title-use-case";
 import { PostgresqlTaskRepository } from "../../infrastructure/repository/postgresql-task-repository";
+import { getDatabase } from "../../libs/drizzle/get-database";
 
 export const editTaskTitleController = new Hono();
 
@@ -30,9 +31,11 @@ editTaskTitleController.post(
       const id = context.req.valid("param").id;
       const title = context.req.valid("json").title;
 
-      const useCase = new EditTaskTitleUseCase(new PostgresqlTaskRepository());
-      const payload = await useCase.invoke({ taskId: id, title });
+      const database = getDatabase();
+      const repository = new PostgresqlTaskRepository(database);
+      const useCase = new EditTaskTitleUseCase(repository);
 
+      const payload = await useCase.invoke({ taskId: id, title });
       return context.json(payload);
     } catch (error) {
       if (error instanceof EditTaskTitleUseCaseNotFoundError) {

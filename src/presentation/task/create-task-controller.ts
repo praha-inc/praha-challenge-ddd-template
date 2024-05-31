@@ -3,6 +3,7 @@ import { Hono } from "hono";
 import { z } from "zod";
 import { CreateTaskUseCase } from "../../application/use-case/create-task-use-case";
 import { PostgresqlTaskRepository } from "../../infrastructure/repository/postgresql-task-repository";
+import { getDatabase } from "../../libs/drizzle/get-database";
 
 export const createTaskController = new Hono();
 
@@ -18,7 +19,8 @@ createTaskController.post(
   async (context) => {
     const title = context.req.valid("json").title;
 
-    const repository = new PostgresqlTaskRepository();
+    const database = getDatabase();
+    const repository = new PostgresqlTaskRepository(database);
     const useCase = new CreateTaskUseCase(repository);
 
     const payload = await useCase.invoke({ title });

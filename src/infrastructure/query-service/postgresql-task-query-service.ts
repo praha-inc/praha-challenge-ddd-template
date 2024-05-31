@@ -4,14 +4,16 @@ import type {
   TaskQueryServiceInterface,
   TaskQueryServicePayload,
 } from "../../application/query-service/task-query-service";
-import { getDatabase } from "../../libs/drizzle/get-database";
+import type { Database } from "../../libs/drizzle/get-database";
 import { tasks } from "../../libs/drizzle/schema";
 
 export class PostgresqlTaskQueryService implements TaskQueryServiceInterface {
+  public constructor(private readonly database: Database) {}
+
   public async invoke(
     input: TaskQueryServiceInput,
   ): Promise<TaskQueryServicePayload | undefined> {
-    const [row] = await getDatabase()
+    const [row] = await this.database
       .select({
         id: tasks.id,
         title: tasks.title,
