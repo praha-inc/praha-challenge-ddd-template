@@ -31,14 +31,14 @@ export class SetTaskDoneUseCase {
       throw new SetTaskDoneUseCaseNotFoundError();
     }
 
-    task.do();
+    task.done();
 
     const savedTask = await this.taskRepository.save(task);
 
     return {
-      id: savedTask.getId(),
-      title: savedTask.getTitle(),
-      done: savedTask.isDone(),
+      id: savedTask.id,
+      title: savedTask.title,
+      done: savedTask.isDone,
     };
   }
 }

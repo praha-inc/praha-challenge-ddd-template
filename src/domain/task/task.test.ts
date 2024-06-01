@@ -9,18 +9,18 @@ describe("task", () => {
     const task = new Task({ title });
 
     test("idがulidで生成される", () => {
-      const generated = task.getId();
+      const generated = task.id;
       const isUlid = z.string().ulid().safeParse(generated);
 
       expect(isUlid.success).toBe(true);
     });
 
     test("タイトルが設定される", () => {
-      expect(task.getTitle()).toBe(title);
+      expect(task.title).toBe(title);
     });
 
     test("タスクは未完了", () => {
-      expect(task.isDone()).toBe(false);
+      expect(task.isDone).toBe(false);
     });
   });
 
@@ -31,9 +31,9 @@ describe("task", () => {
     const task = new Task({ id, title, done });
 
     test("指定したプロパティが設定される", () => {
-      expect(task.getId()).toBe(id);
-      expect(task.getTitle()).toBe(title);
-      expect(task.isDone()).toBe(done);
+      expect(task.id).toBe(id);
+      expect(task.title).toBe(title);
+      expect(task.isDone).toBe(done);
     });
   });
 
@@ -62,7 +62,7 @@ describe("task", () => {
     task.edit(after);
 
     test("タイトルが更新される", () => {
-      expect(task.getTitle()).toBe(after);
+      expect(task.title).toBe(after);
     });
   });
 
@@ -90,10 +90,10 @@ describe("task", () => {
 
   describe("タスクを完了にする", () => {
     const task = new Task({ title: "洗濯機を回す" });
-    task.do();
+    task.done();
 
     test("タスクが完了状態になる", () => {
-      expect(task.isDone()).toBe(true);
+      expect(task.isDone).toBe(true);
     });
   });
 });

@@ -2,9 +2,9 @@ import { z } from "zod";
 import { ulid } from "../../libs/ulid";
 
 export class Task {
-  private readonly id: string;
-  private title: string;
-  private done: boolean;
+  private readonly _id: string;
+  private _title: string;
+  private _isDone: boolean;
 
   private readonly titleSchema = z
     .string()
@@ -16,33 +16,33 @@ export class Task {
   ) {
     const fromData = "id" in props;
     if (fromData) {
-      this.id = props.id;
-      this.title = props.title;
-      this.done = props.done;
+      this._id = props.id;
+      this._title = props.title;
+      this._isDone = props.done;
     } else {
-      this.id = ulid();
-      this.title = this.titleSchema.parse(props.title);
-      this.done = false;
+      this._id = ulid();
+      this._title = this.titleSchema.parse(props.title);
+      this._isDone = false;
     }
   }
 
-  public getId() {
-    return this.id;
+  public get id() {
+    return this._id;
   }
 
-  public getTitle() {
-    return this.title;
+  public get title() {
+    return this._title;
   }
 
-  public isDone() {
-    return this.done;
+  public get isDone() {
+    return this._isDone;
   }
 
   public edit(title: string) {
-    this.title = this.titleSchema.parse(title);
+    this._title = this.titleSchema.parse(title);
   }
 
-  public do() {
-    this.done = true;
+  public done() {
+    this._isDone = true;
   }
 }

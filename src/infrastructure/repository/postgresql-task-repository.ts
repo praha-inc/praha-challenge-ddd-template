@@ -11,9 +11,9 @@ export class PostgresqlTaskRepository implements TaskRepositoryInterface {
     const [row] = await this.database
       .insert(tasks)
       .values({
-        id: task.getId(),
-        title: task.getTitle(),
-        done: task.isDone(),
+        id: task.id,
+        title: task.title,
+        done: task.isDone,
       })
       .onConflictDoUpdate({
         target: tasks.id,
