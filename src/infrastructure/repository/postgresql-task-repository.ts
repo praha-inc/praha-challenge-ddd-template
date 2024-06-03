@@ -1,15 +1,11 @@
 import { eq, sql } from "drizzle-orm";
 import { Task } from "../../domain/task/task";
 import type { TaskRepositoryInterface } from "../../domain/task/task-repository";
-import { getDatabase } from "../../libs/drizzle/get-database";
+import type { Database } from "../../libs/drizzle/get-database";
 import { tasks } from "../../libs/drizzle/schema";
 
 export class PostgresqlTaskRepository implements TaskRepositoryInterface {
-  private readonly database: ReturnType<typeof getDatabase>;
-
-  public constructor() {
-    this.database = getDatabase();
-  }
+  public constructor(private readonly database: Database) {}
 
   public async save(task: Task) {
     const [row] = await this.database

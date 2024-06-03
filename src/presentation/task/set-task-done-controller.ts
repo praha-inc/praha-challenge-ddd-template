@@ -6,6 +6,7 @@ import {
   SetTaskDoneUseCaseNotFoundError,
 } from "../../application/use-case/set-task-done-use-case";
 import { PostgresqlTaskRepository } from "../../infrastructure/repository/postgresql-task-repository";
+import { getDatabase } from "../../libs/drizzle/get-database";
 
 export const setTaskDoneController = new Hono();
 
@@ -22,9 +23,11 @@ setTaskDoneController.post(
     try {
       const id = context.req.valid("param").id;
 
-      const useCase = new SetTaskDoneUseCase(new PostgresqlTaskRepository());
-      const payload = await useCase.invoke({ taskId: id });
+      const database = getDatabase();
+      const repository = new PostgresqlTaskRepository(database);
+      const useCase = new SetTaskDoneUseCase(repository);
 
+      const payload = await useCase.invoke({ taskId: id });
       return context.json(payload);
     } catch (error) {
       if (error instanceof SetTaskDoneUseCaseNotFoundError) {

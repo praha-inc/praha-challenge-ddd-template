@@ -2,14 +2,16 @@ import type {
   TaskListQueryServiceInterface,
   TaskListQueryServicePayload,
 } from "../../application/query-service/task-list-query-service";
-import { getDatabase } from "../../libs/drizzle/get-database";
+import type { Database } from "../../libs/drizzle/get-database";
 import { tasks } from "../../libs/drizzle/schema";
 
 export class PostgresqlTaskListQueryService
   implements TaskListQueryServiceInterface
 {
+  public constructor(private readonly database: Database) {}
+
   public async invoke(): Promise<TaskListQueryServicePayload> {
-    return getDatabase()
+    return this.database
       .select({
         id: tasks.id,
         title: tasks.title,
