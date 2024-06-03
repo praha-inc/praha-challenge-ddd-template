@@ -42,7 +42,7 @@ export class Task {
     this.#title = this.titleSchema.parse(title);
   }
 
-  public done() {
+  public makeAsDone() {
     this.#isDone = true;
   }
 }

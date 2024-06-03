@@ -31,7 +31,7 @@ export class SetTaskDoneUseCase {
       throw new SetTaskDoneUseCaseNotFoundError();
     }
 
-    task.done();
+    task.makeAsDone();
 
     const savedTask = await this.taskRepository.save(task);
 

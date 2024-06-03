@@ -90,7 +90,7 @@ describe("task", () => {
 
   describe("タスクを完了にする", () => {
     const task = new Task({ title: "洗濯機を回す" });
-    task.done();
+    task.makeAsDone();
 
     test("タスクが完了状態になる", () => {
       expect(task.isDone).toBe(true);
