@@ -26,18 +26,30 @@ export class PostgresqlTaskRepository implements TaskRepositoryInterface {
           done: sql.raw(`excluded.${tasks.done.name}`),
         },
       })
-      .returning();
+      .returning({
+        id: tasks.id,
+        title: tasks.title,
+        done: tasks.done,
+      });
 
     if (!row) {
       throw new Error("Failed to save a task");
     }
 
-    return new Task(row);
+    return new Task({
+      id: row.id,
+      title: row.title,
+      done: row.done,
+    });
   }
 
   public async findById(id: string) {
     const [row] = await this.database
-      .select()
+      .select({
+        id: tasks.id,
+        title: tasks.title,
+        done: tasks.done,
+      })
       .from(tasks)
       .where(eq(tasks.id, id));
 
@@ -45,6 +57,10 @@ export class PostgresqlTaskRepository implements TaskRepositoryInterface {
       return undefined;
     }
 
-    return new Task(row);
+    return new Task({
+      id: row.id,
+      title: row.title,
+      done: row.done,
+    });
   }
 }
