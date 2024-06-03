@@ -24,8 +24,8 @@ setTaskDoneController.post(
       const id = context.req.valid("param").id;
 
       const database = getDatabase();
-      const repository = new PostgresqlTaskRepository(database);
-      const useCase = new SetTaskDoneUseCase(repository);
+      const taskRepository = new PostgresqlTaskRepository(database);
+      const useCase = new SetTaskDoneUseCase(taskRepository);
 
       const payload = await useCase.invoke({ taskId: id });
       return context.json(payload);

@@ -32,8 +32,8 @@ editTaskTitleController.post(
       const title = context.req.valid("json").title;
 
       const database = getDatabase();
-      const repository = new PostgresqlTaskRepository(database);
-      const useCase = new EditTaskTitleUseCase(repository);
+      const taskRepository = new PostgresqlTaskRepository(database);
+      const useCase = new EditTaskTitleUseCase(taskRepository);
 
       const payload = await useCase.invoke({ taskId: id, title });
       return context.json(payload);

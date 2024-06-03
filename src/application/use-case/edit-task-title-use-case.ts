@@ -20,23 +20,21 @@ export class EditTaskTitleUseCaseNotFoundError extends Error {
 }
 
 export class EditTaskTitleUseCase {
-  private readonly repository: TaskRepositoryInterface;
-
-  public constructor(repository: TaskRepositoryInterface) {
-    this.repository = repository;
-  }
+  public constructor(
+    private readonly taskRepository: TaskRepositoryInterface,
+  ) {}
 
   public async invoke(
     input: EditTaskTitleUseCaseInput,
   ): Promise<EditTaskTitleUseCasePayload> {
-    const task = await this.repository.findById(input.taskId);
+    const task = await this.taskRepository.findById(input.taskId);
     if (!task) {
       throw new EditTaskTitleUseCaseNotFoundError();
     }
 
     task.edit(input.title);
 
-    const savedTask = await this.repository.save(task);
+    const savedTask = await this.taskRepository.save(task);
 
     return {
       id: savedTask.getId(),

@@ -20,8 +20,8 @@ createTaskController.post(
     const title = context.req.valid("json").title;
 
     const database = getDatabase();
-    const repository = new PostgresqlTaskRepository(database);
-    const useCase = new CreateTaskUseCase(repository);
+    const taskRepository = new PostgresqlTaskRepository(database);
+    const useCase = new CreateTaskUseCase(taskRepository);
 
     const payload = await useCase.invoke({ title });
     return context.json(payload);
