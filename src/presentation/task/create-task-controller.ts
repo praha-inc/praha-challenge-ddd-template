@@ -1,11 +1,18 @@
 import { zValidator } from "@hono/zod-validator";
 import { Hono } from "hono";
+import { createMiddleware } from "hono/factory";
 import { z } from "zod";
 import { CreateTaskUseCase } from "../../application/use-case/create-task-use-case";
 import { PostgresqlTaskRepository } from "../../infrastructure/repository/postgresql-task-repository";
 import { getDatabase } from "../../libs/drizzle/get-database";
 
-export const createTaskController = new Hono();
+type Env = {
+  Variables: {
+    createTaskUseCase: CreateTaskUseCase;
+  };
+};
+
+export const createTaskController = new Hono<Env>();
 
 createTaskController.post(
   "/tasks/new",
@@ -16,14 +23,18 @@ createTaskController.post(
 
     return;
   }),
-  async (context) => {
-    const title = context.req.valid("json").title;
-
+  createMiddleware<Env>(async (context, next) => {
     const database = getDatabase();
     const taskRepository = new PostgresqlTaskRepository(database);
-    const useCase = new CreateTaskUseCase(taskRepository);
+    const createTaskUseCase = new CreateTaskUseCase(taskRepository);
+    context.set("createTaskUseCase", createTaskUseCase);
 
-    const payload = await useCase.invoke({ title });
+    await next();
+  }),
+  async (context) => {
+    const body = context.req.valid("json");
+
+    const payload = await context.var.createTaskUseCase.invoke(body);
     return context.json(payload);
   },
 );

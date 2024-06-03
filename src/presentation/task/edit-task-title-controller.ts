@@ -1,5 +1,6 @@
 import { zValidator } from "@hono/zod-validator";
 import { Hono } from "hono";
+import { createMiddleware } from "hono/factory";
 import { z } from "zod";
 import {
   EditTaskTitleUseCase,
@@ -8,7 +9,13 @@ import {
 import { PostgresqlTaskRepository } from "../../infrastructure/repository/postgresql-task-repository";
 import { getDatabase } from "../../libs/drizzle/get-database";
 
-export const editTaskTitleController = new Hono();
+type Env = {
+  Variables: {
+    editTaskTitleUseCase: EditTaskTitleUseCase;
+  };
+};
+
+export const editTaskTitleController = new Hono<Env>();
 
 editTaskTitleController.post(
   "/tasks/:id/edit",
@@ -26,16 +33,23 @@ editTaskTitleController.post(
 
     return;
   }),
+  createMiddleware<Env>(async (context, next) => {
+    const database = getDatabase();
+    const taskRepository = new PostgresqlTaskRepository(database);
+    const editTaskTitleUseCase = new EditTaskTitleUseCase(taskRepository);
+    context.set("editTaskTitleUseCase", editTaskTitleUseCase);
+
+    await next();
+  }),
   async (context) => {
     try {
-      const id = context.req.valid("param").id;
-      const title = context.req.valid("json").title;
+      const param = context.req.valid("param");
+      const body = context.req.valid("json");
 
-      const database = getDatabase();
-      const taskRepository = new PostgresqlTaskRepository(database);
-      const useCase = new EditTaskTitleUseCase(taskRepository);
-
-      const payload = await useCase.invoke({ taskId: id, title });
+      const payload = await context.var.editTaskTitleUseCase.invoke({
+        taskId: param.id,
+        title: body.title,
+      });
       return context.json(payload);
     } catch (error) {
       if (error instanceof EditTaskTitleUseCaseNotFoundError) {
