@@ -1,9 +1,10 @@
 import { zValidator } from "@hono/zod-validator";
 import { Hono } from "hono";
 import { z } from "zod";
-import type { TaskQueryServiceInterface } from "../../application/query-service/task-query-service";
-import { EditTaskTitleUseCase } from "../../application/use-case/edit-task-title-use-case";
-import { PostgresqlTaskQueryService } from "../../infrastructure/query-service/postgresql-task-query-service";
+import {
+  EditTaskTitleUseCase,
+  EditTaskTitleUseCaseNotFoundError,
+} from "../../application/use-case/edit-task-title-use-case";
 import { PostgresqlTaskRepository } from "../../infrastructure/repository/postgresql-task-repository";
 
 export const editTaskTitleController = new Hono();
@@ -25,19 +26,20 @@ editTaskTitleController.post(
     return;
   }),
   async (context) => {
-    const id = context.req.valid("param").id;
-    const title = context.req.valid("json").title;
+    try {
+      const id = context.req.valid("param").id;
+      const title = context.req.valid("json").title;
 
-    const queryService: TaskQueryServiceInterface =
-      new PostgresqlTaskQueryService();
-    const task = await queryService.invoke({ id });
+      const useCase = new EditTaskTitleUseCase(new PostgresqlTaskRepository());
+      const payload = await useCase.invoke({ taskId: id, title });
 
-    if (!task) {
-      return context.text("task not found", 404);
+      return context.json(payload);
+    } catch (error) {
+      if (error instanceof EditTaskTitleUseCaseNotFoundError) {
+        return context.text(error.message, 404);
+      }
+
+      throw error;
     }
-
-    const useCase = new EditTaskTitleUseCase(new PostgresqlTaskRepository());
-    const payload = await useCase.invoke({ task, title });
-    return context.json(payload);
   },
 );
