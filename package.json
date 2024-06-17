@@ -37,7 +37,7 @@
     "@types/node": "20.14.2",
     "drizzle-kit": "0.22.7",
     "typescript": "5.4.5",
-    "vite": "5.2.13",
+    "vite": "5.3.1",
     "vite-node": "1.6.0",
     "vitest": "1.6.0"
   }
