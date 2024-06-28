@@ -13,7 +13,7 @@ importers:
         version: 1.11.4
       '@hono/zod-validator':
         specifier: 0.2.2
-        version: 0.2.2(hono@4.4.8)(zod@3.23.8)
+        version: 0.2.2(hono@4.4.9)(zod@3.23.8)
       dotenv:
         specifier: 16.4.5
         version: 16.4.5
@@ -21,8 +21,8 @@ importers:
         specifier: 0.31.2
         version: 0.31.2(postgres@3.4.4)
       hono:
-        specifier: 4.4.8
-        version: 4.4.8
+        specifier: 4.4.9
+        version: 4.4.9
       just-memoize:
         specifier: 2.2.0
         version: 2.2.0
@@ -847,8 +847,8 @@ packages:
   get-tsconfig@4.7.5:
     resolution: {integrity: sha512-ZCuZCnlqNzjb4QprAzXKdpp/gh6KTxSJuw3IBsPnV/7fV4NxC9ckB+vPTt8w7fJA0TaSD7c55BR47JD6MEDyDw==}
 
-  hono@4.4.8:
-    resolution: {integrity: sha512-eewnSgTzdWgFVn97kPV24h+9UVNUQ+9mj6IRxr7dBseTaTBSHtFo/T/vRNcqJkQFysVoXyecflr3Xe/fdvzEpQ==}
+  hono@4.4.9:
+    resolution: {integrity: sha512-VW1hnYipHL/XsnSYiCTLJ+Z7iisZYWwSOiKXm9RBV2NKPxNqjfaHqeMFiDl11fK893ofmErvRpX20+FTNjZIjA==}
     engines: {node: '>=16.0.0'}
 
   human-signals@5.0.0:
@@ -1348,9 +1348,9 @@ snapshots:
 
   '@hono/node-server@1.11.4': {}
 
-  '@hono/zod-validator@0.2.2(hono@4.4.8)(zod@3.23.8)':
+  '@hono/zod-validator@0.2.2(hono@4.4.9)(zod@3.23.8)':
     dependencies:
-      hono: 4.4.8
+      hono: 4.4.9
       zod: 3.23.8
 
   '@jest/schemas@29.6.3':
@@ -1617,7 +1617,7 @@ snapshots:
     dependencies:
       resolve-pkg-maps: 1.0.0
 
-  hono@4.4.8: {}
+  hono@4.4.9: {}
 
   human-signals@5.0.0: {}
 
