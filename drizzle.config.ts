@@ -1,4 +1,4 @@
-import { defineConfig } from "drizzle-kit";
+import { type Config, defineConfig } from "drizzle-kit";
 import { getCredentials } from "./src/libs/drizzle/get-credentials";
 
 export default defineConfig({
@@ -10,9 +10,9 @@ export default defineConfig({
     return {
       host: credentials.DB_HOST,
       port: credentials.DB_PORT,
-      username: credentials.DB_USER,
+      user: credentials.DB_USER,
       password: credentials.DB_PASSWORD,
       database: credentials.DB_NAME,
-    };
+    } satisfies Extract<Config, { dbCredentials: unknown }>["dbCredentials"];
   })(),
 });
