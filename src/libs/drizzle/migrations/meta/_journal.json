@@ -8,6 +8,13 @@
       "when": 1716362343900,
       "tag": "0000_striped_jimmy_woo",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1725771079445,
+      "tag": "0001_curved_franklin_richards",
+      "breakpoints": true
     }
   ]
 }

@@ -1,4 +1,6 @@
 {
+  "id": "5c6c57bf-1e08-4972-a82a-42d889314ed8",
+  "prevId": "3b03ea51-cc3d-482a-86b6-88427911b425",
   "version": "7",
   "dialect": "postgresql",
   "tables": {
@@ -28,17 +30,23 @@
       "indexes": {},
       "foreignKeys": {},
       "compositePrimaryKeys": {},
-      "uniqueConstraints": {}
+      "uniqueConstraints": {
+        "tasks_id_unique": {
+          "name": "tasks_id_unique",
+          "nullsNotDistinct": false,
+          "columns": [
+            "id"
+          ]
+        }
+      }
     }
   },
   "enums": {},
   "schemas": {},
+  "sequences": {},
   "_meta": {
+    "columns": {},
     "schemas": {},
-    "tables": {},
-    "columns": {}
-  },
-  "id": "3b03ea51-cc3d-482a-86b6-88427911b425",
-  "prevId": "00000000-0000-0000-0000-000000000000",
-  "sequences": {}
+    "tables": {}
+  }
 }
