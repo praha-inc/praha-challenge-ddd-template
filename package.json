@@ -20,7 +20,7 @@
     "migration:drop": "drizzle-kit drop"
   },
   "dependencies": {
-    "@hono/node-server": "1.13.1",
+    "@hono/node-server": "1.13.2",
     "@hono/zod-validator": "0.4.1",
     "dotenv": "16.4.5",
     "drizzle-orm": "0.34.1",
