@@ -26,7 +26,7 @@
     "drizzle-orm": "0.35.3",
     "hono": "4.6.7",
     "just-memoize": "2.2.0",
-    "postgres": "3.4.4",
+    "postgres": "3.4.5",
     "ulid": "2.3.0",
     "zod": "3.23.8"
   },
