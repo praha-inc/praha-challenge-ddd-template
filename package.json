@@ -23,7 +23,7 @@
     "@hono/node-server": "1.13.7",
     "@hono/zod-validator": "0.4.1",
     "dotenv": "16.4.7",
-    "drizzle-orm": "0.37.0",
+    "drizzle-orm": "0.38.0",
     "hono": "4.6.13",
     "just-memoize": "2.2.0",
     "postgres": "3.4.5",
