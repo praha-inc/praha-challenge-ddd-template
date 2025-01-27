@@ -24,7 +24,7 @@
     "@hono/zod-validator": "0.4.2",
     "dotenv": "16.4.7",
     "drizzle-orm": "0.38.4",
-    "hono": "4.6.18",
+    "hono": "4.6.19",
     "just-memoize": "2.2.0",
     "postgres": "3.4.5",
     "ulid": "2.3.0",
