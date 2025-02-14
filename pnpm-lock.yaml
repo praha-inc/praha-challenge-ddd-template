@@ -10,10 +10,10 @@ importers:
     dependencies:
       '@hono/node-server':
         specifier: 1.13.8
-        version: 1.13.8(hono@4.7.0)
+        version: 1.13.8(hono@4.7.1)
       '@hono/zod-validator':
         specifier: 0.4.2
-        version: 0.4.2(hono@4.7.0)(zod@3.24.2)
+        version: 0.4.2(hono@4.7.1)(zod@3.24.2)
       dotenv:
         specifier: 16.4.7
         version: 16.4.7
@@ -21,8 +21,8 @@ importers:
         specifier: 0.39.3
         version: 0.39.3(@libsql/client-wasm@0.14.0)(postgres@3.4.5)
       hono:
-        specifier: 4.7.0
-        version: 4.7.0
+        specifier: 4.7.1
+        version: 4.7.1
       just-memoize:
         specifier: 2.2.0
         version: 2.2.0
@@ -865,8 +865,8 @@ packages:
   get-tsconfig@4.7.5:
     resolution: {integrity: sha512-ZCuZCnlqNzjb4QprAzXKdpp/gh6KTxSJuw3IBsPnV/7fV4NxC9ckB+vPTt8w7fJA0TaSD7c55BR47JD6MEDyDw==}
 
-  hono@4.7.0:
-    resolution: {integrity: sha512-hV97aIR4WYbG30k234sD9B3VNr1ZWdQRmrVF76LKFlmI7O9Yo70mG9+mFwyQ6Sjrz4wH71GfnBxv6CPjcx3QNw==}
+  hono@4.7.1:
+    resolution: {integrity: sha512-V3eWoPkBxoNgFCkSc5Y5rpLF6YoQQx1pkYO4qrF6YfOw8RZbujUNlJLZCxh0z9gZct70+je2Ih7Zrdpv21hP9w==}
     engines: {node: '>=16.9.0'}
 
   human-signals@5.0.0:
@@ -1372,13 +1372,13 @@ snapshots:
   '@esbuild/win32-x64@0.21.5':
     optional: true
 
-  '@hono/node-server@1.13.8(hono@4.7.0)':
+  '@hono/node-server@1.13.8(hono@4.7.1)':
     dependencies:
-      hono: 4.7.0
+      hono: 4.7.1
 
-  '@hono/zod-validator@0.4.2(hono@4.7.0)(zod@3.24.2)':
+  '@hono/zod-validator@0.4.2(hono@4.7.1)(zod@3.24.2)':
     dependencies:
-      hono: 4.7.0
+      hono: 4.7.1
       zod: 3.24.2
 
   '@jest/schemas@29.6.3':
@@ -1658,7 +1658,7 @@ snapshots:
     dependencies:
       resolve-pkg-maps: 1.0.0
 
-  hono@4.7.0: {}
+  hono@4.7.1: {}
 
   human-signals@5.0.0: {}
 
