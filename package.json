@@ -36,7 +36,7 @@
     "@tsconfig/strictest": "2.0.5",
     "@types/node": "20.17.22",
     "drizzle-kit": "0.30.5",
-    "typescript": "5.7.3",
+    "typescript": "5.8.2",
     "vite": "5.4.14",
     "vite-node": "1.6.1",
     "vitest": "1.6.1"
