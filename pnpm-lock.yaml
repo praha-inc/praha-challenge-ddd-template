@@ -30,8 +30,8 @@ importers:
         specifier: 3.4.5
         version: 3.4.5
       ulid:
-        specifier: 2.4.0
-        version: 2.4.0
+        specifier: 3.0.0
+        version: 3.0.0
       zod:
         specifier: 3.24.2
         version: 3.24.2
@@ -1062,8 +1062,8 @@ packages:
   ufo@1.5.3:
     resolution: {integrity: sha512-Y7HYmWaFwPUmkoQCUIAYpKqkOf+SbVj/2fJJZ4RJMCfZp0rTGwRbzQD+HghfnhKOjL9E01okqz+ncJskGYfBNw==}
 
-  ulid@2.4.0:
-    resolution: {integrity: sha512-fIRiVTJNcSRmXKPZtGzFQv9WRrZ3M9eoptl/teFJvjOzmpU+/K/JH6HZ8deBfb5vMEpicJcLn7JmvdknlMq7Zg==}
+  ulid@3.0.0:
+    resolution: {integrity: sha512-yvZYdXInnJve6LdlPIuYmURdS2NP41ZoF4QW7SXwbUKYt53+0eDAySO+rGSvM2O/ciuB/G+8N7GQrZ1mCJpuqw==}
     hasBin: true
 
   undici-types@6.19.6:
@@ -1866,7 +1866,7 @@ snapshots:
 
   ufo@1.5.3: {}
 
-  ulid@2.4.0: {}
+  ulid@3.0.0: {}
 
   undici-types@6.19.6: {}
 
