@@ -34,7 +34,7 @@
     "@biomejs/biome": "1.9.4",
     "@tsconfig/node-lts": "20.1.3",
     "@tsconfig/strictest": "2.0.5",
-    "@types/node": "20.17.30",
+    "@types/node": "20.17.31",
     "drizzle-kit": "0.31.0",
     "typescript": "5.8.3",
     "vite": "5.4.18",
