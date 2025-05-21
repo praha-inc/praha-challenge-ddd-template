@@ -28,7 +28,7 @@
     "just-memoize": "2.2.0",
     "postgres": "3.4.6",
     "ulid": "2.4.0",
-    "zod": "3.25.7"
+    "zod": "3.25.17"
   },
   "devDependencies": {
     "@biomejs/biome": "1.9.4",
