@@ -18,8 +18,8 @@ importers:
         specifier: 16.6.1
         version: 16.6.1
       drizzle-orm:
-        specifier: 0.44.5
-        version: 0.44.5(@libsql/client-wasm@0.14.0)(gel@2.0.0)(postgres@3.4.7)
+        specifier: 0.44.7
+        version: 0.44.7(@libsql/client-wasm@0.14.0)(gel@2.0.0)(postgres@3.4.7)
       hono:
         specifier: 4.10.3
         version: 4.10.3
@@ -752,8 +752,8 @@ packages:
     resolution: {integrity: sha512-/B4e/4pwnx25QwD5xXgdpo1S+077a2VZdosXbItE/oNmUgQwZydGDz9qJYmnQl/b+5IX0rLfwRhrPnroGtrg8Q==}
     hasBin: true
 
-  drizzle-orm@0.44.5:
-    resolution: {integrity: sha512-jBe37K7d8ZSKptdKfakQFdeljtu3P2Cbo7tJoJSVZADzIKOBo9IAJPOmMsH2bZl90bZgh8FQlD8BjxXA/zuBkQ==}
+  drizzle-orm@0.44.7:
+    resolution: {integrity: sha512-quIpnYznjU9lHshEOAYLoZ9s3jweleHlZIAWR/jX9gAWNg/JhQ1wj0KGRf7/Zm+obRrYd9GjPVJg790QY9N5AQ==}
     peerDependencies:
       '@aws-sdk/client-rds-data': '>=3'
       '@cloudflare/workers-types': '>=4'
@@ -1599,7 +1599,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  drizzle-orm@0.44.5(@libsql/client-wasm@0.14.0)(gel@2.0.0)(postgres@3.4.7):
+  drizzle-orm@0.44.7(@libsql/client-wasm@0.14.0)(gel@2.0.0)(postgres@3.4.7):
     optionalDependencies:
       '@libsql/client-wasm': 0.14.0
       gel: 2.0.0
