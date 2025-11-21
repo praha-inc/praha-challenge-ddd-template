@@ -40,8 +40,8 @@ importers:
         specifier: 1.9.4
         version: 1.9.4
       '@tsconfig/node-lts':
-        specifier: 20.1.3
-        version: 20.1.3
+        specifier: 22.0.4
+        version: 22.0.4
       '@tsconfig/strictest':
         specifier: 2.0.7
         version: 2.0.7
@@ -663,8 +663,8 @@ packages:
   '@sinclair/typebox@0.27.8':
     resolution: {integrity: sha512-+Fj43pSMwJs4KRrH/938Uf+uAELIgVBmQzg/q1YG10djyfA3TnrU8N8XzqCh/okZdszqBQTZf96idMfE5lnwTA==}
 
-  '@tsconfig/node-lts@20.1.3':
-    resolution: {integrity: sha512-m3b7EP2U+h5tNSpaBMfcTuHmHn04wrgRPQQrfKt75YIPq6kPs2153/KfPHdqkEWGx5pEBvS6rnvToT+yTtC1iw==}
+  '@tsconfig/node-lts@22.0.4':
+    resolution: {integrity: sha512-5eAeCX6l/EYe6H2UAw5nBgjfAgdlsR+lSp8YNNGwz+ixoi7JfJ5bOQvsiEhxGm5bOZFVF+cJSIj4tanpCCRMIw==}
 
   '@tsconfig/strictest@2.0.7':
     resolution: {integrity: sha512-lG1bXQloBVvQXasPBZSBaWbs7GNW4txZMYs7XMUVzM0s4seCbJACYBPFIRpGNVD3gC8gndK00AZON1uBrJt4Fw==}
@@ -1505,7 +1505,7 @@ snapshots:
 
   '@sinclair/typebox@0.27.8': {}
 
-  '@tsconfig/node-lts@20.1.3': {}
+  '@tsconfig/node-lts@22.0.4': {}
 
   '@tsconfig/strictest@2.0.7': {}
 
