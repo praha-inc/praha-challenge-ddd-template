@@ -33,7 +33,7 @@
   "devDependencies": {
     "@biomejs/biome": "1.9.4",
     "@tsconfig/node-lts": "20.1.3",
-    "@tsconfig/strictest": "2.0.7",
+    "@tsconfig/strictest": "2.0.8",
     "@types/node": "20.19.24",
     "drizzle-kit": "0.31.6",
     "typescript": "5.9.3",
