@@ -3,7 +3,7 @@
   "name": "praha-challenge-ddd-template",
   "version": "1.0.0",
   "type": "module",
-  "packageManager": "pnpm@9.15.9",
+  "packageManager": "pnpm@10.30.0",
   "engines": {
     "node": "20.19.5"
   },
