@@ -12,8 +12,8 @@ importers:
         specifier: 1.19.14
         version: 1.19.14(hono@4.12.22)
       '@hono/zod-validator':
-        specifier: 0.7.5
-        version: 0.7.5(hono@4.12.22)(zod@4.4.3)
+        specifier: 0.8.0
+        version: 0.8.0(hono@4.12.22)(zod@4.4.3)
       dotenv:
         specifier: 17.4.2
         version: 17.4.2
@@ -712,10 +712,10 @@ packages:
     peerDependencies:
       hono: ^4
 
-  '@hono/zod-validator@0.7.5':
-    resolution: {integrity: sha512-n4l4hutkfYU07PzRUHBOVzUEn38VSfrh+UVE5d0w4lyfWDOEhzxIupqo5iakRiJL44c3vTuFJBvcmUl8b9agIA==}
+  '@hono/zod-validator@0.8.0':
+    resolution: {integrity: sha512-5uS4S1/LKtZQYvD4BtpPUFkOv8d1wNxHHrChm26buMiEYc1FrHWvDUaKVBwkiVtvSExHSpLGDvcnpI2Copyj9w==}
     peerDependencies:
-      hono: '>=3.9.0'
+      hono: '>=4.10.0'
       zod: ^3.25.0 || ^4.0.0
 
   '@jest/schemas@29.6.3':
@@ -1669,7 +1669,7 @@ snapshots:
     dependencies:
       hono: 4.12.22
 
-  '@hono/zod-validator@0.7.5(hono@4.12.22)(zod@4.4.3)':
+  '@hono/zod-validator@0.8.0(hono@4.12.22)(zod@4.4.3)':
     dependencies:
       hono: 4.12.22
       zod: 4.4.3
