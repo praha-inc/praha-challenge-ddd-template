@@ -38,7 +38,7 @@
     "drizzle-kit": "0.31.10",
     "typescript": "5.9.3",
     "vite": "5.4.21",
-    "vite-node": "1.6.1",
+    "vite-node": "6.0.0",
     "vitest": "1.6.1"
   }
 }
