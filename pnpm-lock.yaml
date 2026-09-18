@@ -10,10 +10,10 @@ importers:
     dependencies:
       '@hono/node-server':
         specifier: 1.19.17
-        version: 1.19.17(hono@4.13.7)
+        version: 1.19.17(hono@4.13.8)
       '@hono/zod-validator':
         specifier: 0.9.1
-        version: 0.9.1(hono@4.13.7)(zod@4.6.5)
+        version: 0.9.1(hono@4.13.8)(zod@4.6.5)
       dotenv:
         specifier: 17.4.2
         version: 17.4.2
@@ -21,8 +21,8 @@ importers:
         specifier: 0.45.2
         version: 0.45.2(postgres@3.4.9)
       hono:
-        specifier: 4.13.7
-        version: 4.13.7
+        specifier: 4.13.8
+        version: 4.13.8
       just-memoize:
         specifier: 2.2.0
         version: 2.2.0
@@ -1051,8 +1051,8 @@ packages:
   get-tsconfig@4.14.3:
     resolution: {integrity: sha512-++QEw4DIY7WGoukz+/+A/8dGYPT9l9yIadnmSgZ8Rjr3YVSVDipQSO9CdnJo9ePqFqUUqh+wk9uIaoiAwsiPkA==}
 
-  hono@4.13.7:
-    resolution: {integrity: sha512-c8/gF9ac8Y78/agExVocyLevgR+JlpNB444Py0FSX8pJoPdYUfUzRcXtYEYGwt6l19qIlVZPN5Mfsw9jFShmQQ==}
+  hono@4.13.8:
+    resolution: {integrity: sha512-/Gng7NfoykZl2pjukW5Z6+8Yxm3BPRf86GTbQnt0SbySkvax4fyL4H3HhY1cCpBGmiW9XDRFzRV+CXK2W8QudQ==}
     engines: {node: '>=16.9.0'}
 
   js-tokens@9.0.1:
@@ -1646,13 +1646,13 @@ snapshots:
   '@esbuild/win32-x64@0.28.2':
     optional: true
 
-  '@hono/node-server@1.19.17(hono@4.13.7)':
+  '@hono/node-server@1.19.17(hono@4.13.8)':
     dependencies:
-      hono: 4.13.7
+      hono: 4.13.8
 
-  '@hono/zod-validator@0.9.1(hono@4.13.7)(zod@4.6.5)':
+  '@hono/zod-validator@0.9.1(hono@4.13.8)(zod@4.6.5)':
     dependencies:
-      hono: 4.13.7
+      hono: 4.13.8
       zod: 4.6.5
 
   '@jridgewell/sourcemap-codec@1.6.0': {}
@@ -1990,7 +1990,7 @@ snapshots:
     dependencies:
       resolve-pkg-maps: 1.0.0
 
-  hono@4.13.7: {}
+  hono@4.13.8: {}
 
   js-tokens@9.0.1: {}
 
