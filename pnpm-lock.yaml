@@ -30,8 +30,8 @@ importers:
         specifier: 3.4.9
         version: 3.4.9
       ulid:
-        specifier: 2.4.0
-        version: 2.4.0
+        specifier: 3.0.2
+        version: 3.0.2
       zod:
         specifier: 4.6.5
         version: 4.6.5
@@ -1179,8 +1179,8 @@ packages:
     engines: {node: '>=16.20.0'}
     hasBin: true
 
-  ulid@2.4.0:
-    resolution: {integrity: sha512-fIRiVTJNcSRmXKPZtGzFQv9WRrZ3M9eoptl/teFJvjOzmpU+/K/JH6HZ8deBfb5vMEpicJcLn7JmvdknlMq7Zg==}
+  ulid@3.0.2:
+    resolution: {integrity: sha512-yu26mwteFYzBAot7KVMqFGCVpsF6g8wXfJzQUHvu1no3+rRRSFcSV2nKeYvNPLD2J4b08jYBDhHUjeH0ygIl9w==}
     hasBin: true
 
   undici-types@7.18.2:
@@ -2014,7 +2014,7 @@ snapshots:
       '@typescript/typescript-win32-arm64': 7.0.2
       '@typescript/typescript-win32-x64': 7.0.2
 
-  ulid@2.4.0: {}
+  ulid@3.0.2: {}
 
   undici-types@7.18.2: {}
 
