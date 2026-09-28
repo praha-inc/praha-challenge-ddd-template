@@ -35,7 +35,7 @@
     "@tsconfig/node-lts": "24.0.1",
     "@tsconfig/strictest": "2.0.8",
     "@types/node": "24.13.6",
-    "drizzle-kit": "0.31.10",
+    "drizzle-kit": "0.31.11",
     "typescript": "7.0.2",
     "vite": "8.3.0",
     "vite-node": "6.0.0",
