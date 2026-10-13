@@ -173,8 +173,8 @@ importers:
         specifier: 0.9.1
         version: 0.9.1(hono@4.13.13)(zod@4.6.5)
       dotenv:
-        specifier: 18.0.6
-        version: 18.0.6
+        specifier: 18.0.7
+        version: 18.0.7
       drizzle-orm:
         specifier: 0.45.4
         version: 0.45.4(postgres@3.4.9)
@@ -1031,8 +1031,8 @@ packages:
     resolution: {integrity: sha512-Btj2BOOO83o3WyH59e8MgXsxEQVcarkUOpEYrubB0urwnN10yQ364rsiByU11nZlqWYZm05i/of7io4mzihBtQ==}
     engines: {node: '>=8'}
 
-  dotenv@18.0.6:
-    resolution: {integrity: sha512-ZMVmohV6CvAJtj++pZNyggluUt6hbRdQAxc2+Z635RL6/AG/ruXv5lHnybUFoxMPL/yrTL/tsF4paZu2l7RA6Q==}
+  dotenv@18.0.7:
+    resolution: {integrity: sha512-QEvMEF8ca3GNZJJnAbOgxpj5ULhBvnMcURp+XKrtvqFNPgjBvYoswQ0Jl2cO7JzCjxZjJhr9ZuIEhlrRxMft/Q==}
     engines: {node: '>=12'}
     hasBin: true
 
@@ -1872,7 +1872,7 @@ snapshots:
 
   detect-libc@2.1.2: {}
 
-  dotenv@18.0.6: {}
+  dotenv@18.0.7: {}
 
   drizzle-kit@0.31.11:
     dependencies:
