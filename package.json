@@ -5,7 +5,7 @@
   "type": "module",
   "packageManager": "pnpm@12.16.0",
   "engines": {
-    "node": "24.22.2"
+    "node": "26.13.0"
   },
   "scripts": {
     "dev": "vite-node --watch src/index.ts",
@@ -34,7 +34,7 @@
     "@biomejs/biome": "2.5.15",
     "@tsconfig/node-lts": "24.0.1",
     "@tsconfig/strictest": "2.0.8",
-    "@types/node": "24.19.2",
+    "@types/node": "26.6.5",
     "drizzle-kit": "0.31.11",
     "typescript": "7.0.2",
     "vite": "8.3.5",
